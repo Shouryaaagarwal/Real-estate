@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Oauth from "../components/Oauth";
 
 function SignUp() {
   const [formData, setformData] = useState({});
@@ -39,7 +40,7 @@ function SignUp() {
        setLoading(false);
        setError(error.message);
      }
-    };
+    }; 
 
   return (
     <div className="p-3 max-w-lg mx-auto">
@@ -71,7 +72,8 @@ function SignUp() {
           className="text-white p-3 rounded-lg bg-slate-700 uppercase hover:opacity-95 disabled:opacity-80"
         >
           {loading ? "Loading..." : "Sign Up"}
-        </button>
+        </button> 
+        <Oauth c/>
       </form>
       <div className="flex gap-3 mt-5">
         <p>Have an account ?</p>

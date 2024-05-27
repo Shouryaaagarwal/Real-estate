@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"; 
-import { signInStart , signInFaluire, signInSuccess } from "../redux/user/userSlice";
+import { signInStart , signInFaluire, signInSuccess } from "../redux/user/userSlice"; 
+import Oauth from "../components/Oauth";
 function SignnnIn() { 
   const [formData, setformData] = useState({});
   // const [error, setError] = useState(null);
@@ -71,7 +72,8 @@ function SignnnIn() {
           className="text-white p-3 rounded-lg bg-slate-700 uppercase hover:opacity-95 disabled:opacity-80"
         >
           {loading ? "Loading..." : "Sign In"}
-        </button>
+        </button> 
+        <Oauth></Oauth>
       </form>
       <div className="flex gap-3 mt-5">
         <p>Dont have an account?</p>
