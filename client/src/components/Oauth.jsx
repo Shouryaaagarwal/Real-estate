@@ -2,7 +2,9 @@ import {GoogleAuthProvider, getAuth, signInWithPopup} from 'firebase/auth';
 import { app } from '../firebase'; 
 import {signInSuccess} from '../redux/user/userSlice/' 
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';  
+// import { app } from '../firebase';
+
 
 function Oauth() {  
   const navigate = useNavigate() ; 
