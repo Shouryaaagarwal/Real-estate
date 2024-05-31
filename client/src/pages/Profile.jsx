@@ -11,11 +11,14 @@ import { app } from "../firebase";
 import {
   updateStart,
   updateFailure,
-  updateSuccess,  
-  deleteUserFailure, 
-  deleteUserStart , 
-  deleteUserSuccess  
-
+  updateSuccess,
+  deleteUserFailure,
+  deleteUserStart,
+  deleteUserSuccess,
+  signoutUserStart,
+  signInFaluire,
+  signoutUserFailure,
+  signoutUserSuccess,
 } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
 import User from "../../../Api/models/user.model";
@@ -86,21 +89,38 @@ function Profile() {
   };
 
   const handleDelete = async () => {
-    try { 
-      dispatch(deleteUserStart()) ;
+    try {
+      dispatch(deleteUserStart());
       const res = await fetch(`/api/user/delete/${currentUser._id}`, {
-        method:'DELETE'
-      }) ; 
-      const data  =  await res.json()  ; 
-      if(data.success ===false){
-            dispatch(deleteUserFailure(data.message)) ; 
-            return  
-      } 
-      dispatch(deleteUserSuccess(data)) ;
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(deleteUserFailure(data.message));
+        return;
+      }
+      dispatch(deleteUserSuccess(data));
     } catch (error) {
       dispatch(deleteUserFailure(error.message));
     }
   };
+
+  const handleSignOut = async () => {
+    try { 
+      dispatch(signoutUserStart()) ;
+ 
+      const res = await fetch('/api/auth/signout') ;
+      const data = await res.json() ; 
+      if(data.success ===false){  
+        dispatch(signoutUserFailure(data.message)) ;
+        return    ;
+      } 
+      dispatch(signoutUserSuccess(data)) ;
+    } catch (error) {
+      dispatch(signoutUserFailure(error.message));
+    }
+  };
+
   return (
     // firbase storage rule
 
@@ -172,7 +192,9 @@ function Profile() {
         <span onClick={handleDelete} className="text-red-700 cursor-pointer">
           Delete Account
         </span>
-        <span className="text-red-700 cursor-pointer">Sign Out</span>
+        <span onClick={handleSignOut} className="text-red-700 cursor-pointer">
+          Sign Out
+        </span>
       </div>
       <p className="text-red-700 mt-5 ">{error ? error : ""}</p>
       <p className="text-green-700 ">{updatesuccess ? "Sucess" : ""} </p>
