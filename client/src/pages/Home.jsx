@@ -1,196 +1,4 @@
 
-
-
-
-// import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
-// import Swiper from "swiper";
-// import { SwiperSlide } from "swiper/react"; 
-// import 'swiper/css/bundle' ; 
-// import SwiperCore from 'swiper' 
-// import { Navigation } from "swiper/modules";
-
-// function Home() {
-//   const [offerListings, setOfferListings] = useState([]);
-//   const [saleListings, setSaleListings] = useState([]);
-//   const [rentListings, setRentListings] = useState([]); 
-//   console.log(saleListings) ;  
-//   SwiperCore.use([Navigation])
-  
-
-//   useEffect(() => {
-//     const fetchOfferListings = async () => {
-//       try {
-//         const res = await fetch(`/api/listing/get?offer=true&limit=4`);
-//         const data = await res.json();
-//         setOfferListings(data); 
-//         fetchRentListings();
-//       } catch (error) {
-//         console.log(error);
-//       }
-//     };
-
-//     const fetchRentListings = async () => {
-//       try {
-//         const res = await fetch(`/api/listing/get?type=rent&limit=4`);
-//         const data = await res.json();
-//         setRentListings(data);
-//         fetchSaleListings();  
-//       } catch (error) {
-//         console.log(error);
-//       }
-//     };
-
-//     const fetchSaleListings = async () => {
-//       try {
-//         const res = await fetch(`/api/listing/get?type=sale&limit=4`);
-//         const data = await res.json();
-//         setSaleListings(data);
-//       } catch (error) {
-//         console.log(error);
-//       }
-//     };
-
-//     fetchOfferListings();
-   
-    
-//   }, []);
-
-//   return (
-//     <div>
-//       {/* {top} */}
-//       <div className="flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto">
-//         <h1 className="text-slate-700 font-bold text-3xl lg:text-6xl">
-//           Find your next <span className="text-slate-500">Perfect</span>
-//           <br />
-//           place with ease
-//         </h1>
-//         <div className="text-gray-400 text-xs sm:text-sm">
-//           Horizon Estate will help you find your home fast, easy, and
-//           comfortable.
-//           <br />
-//           Our expert support is always available.
-//         </div>
-//         <Link
-//           to={`/search`}
-//           className="text-xs sm:text-sm text-blue-900 hover:underline font-bold"
-//         >
-//           Let's get Started...
-//         </Link>
-//       </div> 
-//       <Swiper>
-//         {offerListings &&offerListings.length>0&& offerListings.map((listing)=>{ 
-//           <SwiperSlide> 
-//                 <div style={{background:`url(${listing.imageUrls[0]}) center no-repeat `, backgroundSize:"cover"}} className="h-[500px]" key={listing._id}></div>
-
-//           </SwiperSlide>
-//         })}
-//         </Swiper>
-
-
-//     </div>
-//   );
-// }
-
-// export default Home;
-// import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
-// import Swiper from "swiper";
-// import { SwiperSlide } from "swiper/react"; 
-// import SwiperCore, { Navigation } from 'swiper/modules';
-// import 'swiper/css/bundle'; 
-
-// function Home() {
-//   const [offerListings, setOfferListings] = useState([]);
-//   const [saleListings, setSaleListings] = useState([]);
-//   const [rentListings, setRentListings] = useState([]); 
-//   console.log(saleListings);  
-
-//   SwiperCore.use([Navigation]);
-
-//   useEffect(() => {
-//     const fetchOfferListings = async () => {
-//       try {
-//         const res = await fetch(`/api/listing/get?offer=true&limit=4`);
-//         const data = await res.json();
-//         setOfferListings(data); 
-//       } catch (error) {
-//         console.log(error);
-//       }
-//     };
-
-//     const fetchRentListings = async () => {
-//       try {
-//         const res = await fetch(`/api/listing/get?type=rent&limit=4`);
-//         const data = await res.json();
-//         setRentListings(data);
-//       } catch (error) {
-//         console.log(error);
-//       }
-//     };
-
-//     const fetchSaleListings = async () => {
-//       try {
-//         const res = await fetch(`/api/listing/get?type=sale&limit=4`);
-//         const data = await res.json();
-//         setSaleListings(data);
-//       } catch (error) {
-//         console.log(error);
-//       }
-//     };
-
-//     fetchOfferListings();
-//     fetchRentListings();
-//     fetchSaleListings();
-//   }, []);
-
-//   return (
-//     <div>
-//       {/* {top} */}
-//       <div className="flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto">
-//         <h1 className="text-slate-700 font-bold text-3xl lg:text-6xl">
-//           Find your next <span className="text-slate-500">Perfect</span>
-//           <br />
-//           place with ease
-//         </h1>
-//         <div className="text-gray-400 text-xs sm:text-sm">
-//           Horizon Estate will help you find your home fast, easy, and
-//           comfortable.
-//           <br />
-//           Our expert support is always available.
-//         </div>
-//         <Link
-//           to={`/search`}
-//           className="text-xs sm:text-sm text-blue-900 hover:underline font-bold"
-//         >
-//           Let's get Started...
-//         </Link>
-//       </div> 
-//       <Swiper navigation>
-//         {offerListings && offerListings.length > 0 && offerListings.map((listing) => (
-//           <SwiperSlide key={listing._id}> 
-//             <div
-//               style={{
-//                 background: `url(${listing.imageUrls[0]}) center no-repeat`,
-//                 backgroundSize: "cover"
-//               }}
-//               className="h-[500px]"
-//             ></div>
-//           </SwiperSlide>
-//         ))}
-//       </Swiper>
-//     </div>
-//   );
-// }
-
-// export default Home;
-
-
-
-
-
-
-
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -204,7 +12,7 @@ export default function Home() {
   const [saleListings, setSaleListings] = useState([]);
   const [rentListings, setRentListings] = useState([]);
   SwiperCore.use([Navigation]);
-  console.log(offerListings);
+
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
@@ -216,6 +24,7 @@ export default function Home() {
         console.log(error);
       }
     };
+
     const fetchRentListings = async () => {
       try {
         const res = await fetch('/api/listing/get?type=rent&limit=4');
@@ -233,14 +42,15 @@ export default function Home() {
         const data = await res.json();
         setSaleListings(data);
       } catch (error) {
-        log(error);
+        console.log(error);
       }
     };
+
     fetchOfferListings();
   }, []);
+
   return (
     <div>
-      {/* top */}
       <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto'>
         <h1 className='text-slate-700 font-bold text-3xl lg:text-6xl'>
           Find your next <span className='text-slate-500'>perfect</span>
@@ -261,25 +71,21 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* swiper */}
       <Swiper navigation>
         {offerListings &&
           offerListings.length > 0 &&
           offerListings.map((listing) => (
-            <SwiperSlide>
+            <SwiperSlide key={listing._id}>
               <div
                 style={{
                   background: `url(${listing.imageUrls[0]}) center no-repeat`,
                   backgroundSize: 'cover',
                 }}
                 className='h-[500px]'
-                key={listing._id}
               ></div>
             </SwiperSlide>
           ))}
       </Swiper>
-
-      {/* listing results for offer, sale and rent */}
 
       <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10'>
         {offerListings && offerListings.length > 0 && (
@@ -369,99 +175,3 @@ export default function Home() {
 
 
 
-
-
-
-
-
- 
-
-// import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
-
-// function Home() {
-//   const [offerListings, setOfferListings] = useState([]);
-//   const [saleListings, setSaleListings] = useState([]);
-//   const [rentListings, setRentListings] = useState([]);  
-  
-
-//   useEffect(() => {
-//     const fetchOfferListings = async () => {
-//       try {
-//         const res = await fetch('/api/listing/get?offer=true&limit=4');
-//         const data = await res.json();
-//         console.log("Offer Listings:", data); // Log data to verify API response
-//         setOfferListings(data); 
-//         fetchRentListings();
-//       } catch (error) {
-//         console.log("Error fetching offer listings:", error);
-//       }
-//     };
-
-//     const fetchRentListings = async () => {
-//       try {
-//         const ress = await fetch('/api/listing/get?type=rent&limit=4');
-//         const data = await ress.json();
-//         console.log("Rent Listings:", data); // Log data to verify API response
-//         setRentListings(data);
-//         fetchSaleListings();  
-//       } catch (error) {
-//         console.log("Error fetching rent listings:", error);
-//       }
-//     };
-
-//     const fetchSaleListings = async () => {
-//       try {
-//         const resss = await fetch('/api/listing/get?type=sale&limit=4');
-//         const data = await resss.json();
-//         console.log("Sale Listings:", data); // Log data to verify API response
-//         setSaleListings(data);
-//       } catch (error) {
-//         console.log("Error fetching sale listings:", error);
-//       }
-//     };
-
-//     fetchOfferListings();
-//   }, []);
-
-//   return (
-//     <div>
-//       <div className="flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto">
-//         <h1 className="text-slate-700 font-bold text-3xl lg:text-6xl">
-//           Find your next <span className="text-slate-500">Perfect</span>
-//           <br />
-//           place with ease
-//         </h1>
-//         <div className="text-gray-400 text-xs sm:text-sm">
-//           Horizon Estate will help you find your home fast, easy, and
-//           comfortable.
-//           <br />
-//           Our expert support is always available.
-//         </div>
-//         <Link
-//           to={`/search`}
-//           className="text-xs sm:text-sm text-blue-900 hover:underline font-bold"
-//         >
-//           Let's get Started...
-//         </Link>
-//       </div>
-
-//       {/* Displaying Sale Listings */}
-//       <div className="sale-listings">
-//         <h2 className="text-slate-700 font-bold text-2xl">Sale Listings</h2>
-//         {saleListings.length > 0 ? (
-//           <ul>
-//             {saleListings.map((listing, index) => (
-//               <li key={index}>{listing.title || `Listing ${index + 1}`}</li>
-//             ))}
-//           </ul>
-//         ) : (
-//           <p>No sale listings available.</p>
-//         )}
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Home;
- 
