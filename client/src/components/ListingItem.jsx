@@ -22,7 +22,7 @@ function ListingItem({ listing }) {
                ${listing.offer?listing.discountPrice.toLocaleString('en-US'):listing.regularPrice.toLocaleString('en-US')}
               {listing.type==='rent'&&' / month'}
               </p> 
-              <div className="flex  text-slate-700"> 
+              <div className="flex  text-slate-700 gap-2"> 
                 <div className="font-bold text-xs ">{listing.bedrooms>1?`${listing.bedrooms} beds`:`${listing.bedrooms} bed`}</div>
                 <div className="font-bold text-xs ">{listing.bathrooms>1?`${listing.bathrooms} baths`:`${listing.bedrooms} bath`}</div>
               </div>
